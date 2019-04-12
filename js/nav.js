@@ -24,13 +24,6 @@ $(document).ready(function(){
   		if (callNow) func.apply(context, args);
   	};
   }
-  var i = null;
-  function throttle(func, delay){
-    if (i) {
-        window.clearTimeout(i);
-    }
-    i = window.setTimeout(func, delay)
-  }
   function close_pmenu(location, time, wait) {
     if (wait === undefined) {
       $(".p_grid_container").animate({
