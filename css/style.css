@@ -90,7 +90,6 @@ body::-webkit-scrollbar {
 .container-fluid {
   height: 100vh;
   position: fixed;
-  padding: 0;
 }
 
 .col-6 {
@@ -130,22 +129,13 @@ h2:hover {
   cursor: crosshair;
 }
 
-/* button text */
-.nav {
-  text-align: right;
-}
-
-.nav ul {
-  width: auto;
-  position: fixed;
-  z-index: -1;
-  opacity: 0;
-  color: var(--neutral);
+ul {
+  list-style-type: none;
   padding: 0;
-  cursor: crosshair;
+  margin: 0;
 }
 
-.nav li {
+ul li {
   display: block;
   width: auto;
   font-size: 16px;
@@ -154,48 +144,70 @@ h2:hover {
   position: relative;
 }
 
-.nav li .icon {
+.nav {
+  position: fixed;
+  z-index: 999;
+  opacity: 0;
+}
+/* button text */
+#menu {
+  width: auto;
+  position: fixed;
+  opacity: 1;
+  color: var(--neutral);
+  padding: 0;
+  cursor: crosshair;
+  left: 0;
+}
+
+.icon {
   opacity: 1;
   font-family: Zazz;
   font-size: 54px;
   line-height: 16px;
   color: black;
-  letter-spacing: -36px;
   box-sizing: border-box;
-  /*padding: 12px 11px 10px 9px;
-  background: black;
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;*/
+  margin-right: -54px;
   cursor: crosshair;
 }
 
-.nav li .icon_text {
+#menu .icon_text {
+  color: var(--neutral);
   position: relative;
   font-family: Pitch;
   background: black;
   padding: 9px 12px 8px 10px;
+  margin-right: -0.25px;
   top: -13px;
 }
 
+#home_button, #typetester_patternmaker_button, #structure_precedents_button, #download_colophon_button {
+  opacity: 0.75;
+}
+
 #home_button {
-  opacity: 0.25;
 }
 
-#typetester_patternmaker_button {
-  opacity: 0.25;
+#placeholder {
+  position: fixed;
+  left: 0;
+  width: 16px;
 }
 
-#structure_precedents_button {
-  opacity: 0.25;
+#placeholder ul li {
+  color: black;
+  letter-spacing: -36px;
+  box-sizing: border-box;
 }
 
-#download_colophon_button {
+#icon_home, #icon_ttpm, #icon_sp, #icon_dc {
   opacity: 0.25;
 }
 
 #home {
   background: var(--neutral);
-  padding-top: 27vh;
+  height: 100vh;
+  width: 100vw;
   text-align: center;
 }
 
@@ -205,18 +217,19 @@ h2:hover {
   45% {letter-spacing: 2vh;}
   50% {letter-spacing: 2vh;}
 }
-
 #home h1 {
   font-family: "Zazz";
   font-size: 19vh;
+  height: 19vh;
+  line-height: 100%;
   color: black;
   text-align: center;
-  margin-bottom: 2.5vh;
+  margin: 27vh auto 2.5vh auto;
   animation: spaceout 8s ease infinite;
   cursor: crosshair;
 }
 
-#home p, #home span {
+#home p {
   font-size: 21px;
   line-height: 125%;
   text-align: center;

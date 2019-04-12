@@ -1,6 +1,5 @@
-var nav_width = $(".nav ul").outerWidth(),
-    icon_width = $("#home_button .icon").innerWidth(),
-    hb_width = $("#home_button .icon_text").outerWidth(),
+var menu_width = $("#menu").outerWidth() + 16,
+    hb_width = $("#home_button").width(),
     ttpm_width = $("#typetester_patternmaker_button .icon_text").outerWidth(),
     sp_width = $("#structure_precedents_button .icon_text").outerWidth(),
     dc_width = $("#download_colophon_button .icon_text").outerWidth(),
@@ -39,33 +38,62 @@ $(document).ready(function(){
     }
   }
   function menu_tab() {
-    $(".nav ul").css({
-      'z-index': '998',
-      'top': header_height,
+    $(".nav").css({
+      'top': header_height + 16,
     });
-    $(".nav ul").animate({
-      left: icon_width - nav_width,
+    $("#menu").animate({
+      left: -menu_width,
     }, 500, function() {
     });
-    $(".nav ul").delay(750).animate({
-      opacity: 1
+    $(".nav").delay(750).animate({
+      opacity: 1,
     }, 500, function() {
     });
-    $("#home_button, #typetester_patternmaker_button, #structure_precedents_button, #download_colophon_button").delay(250).animate({
-      left: 0,
-    }, 250, function() {
-    });
+    if (ttpm_on == 1 && sp_on == 0) {
+      $("#icon_home, #icon_sp, #icon_dc").animate({
+        opacity: 0.25,
+      }, 250, function() {
+      });
+      $("#icon_ttpm").animate({
+        opacity: 1,
+      }, 10, function() {
+      });
+    }
+    else if (ttpm_on == 1 && sp_on == 1 && dc_on == 0) {
+      $("#icon_home, #icon_ttpm, #icon_dc").animate({
+        opacity: 0.25,
+      }, 250, function() {
+      });
+      $("#icon_sp").animate({
+        opacity: 1,
+      }, 10, function() {
+      });
+    }
+    else if (ttpm_on == 1 && sp_on == 1 && dc_on == 1) {
+      $("#icon_home, #icon_ttpm, #icon_sp").animate({
+        opacity: 0.25,
+      }, 250, function() {
+      });
+      $("#icon_dc").animate({
+        opacity: 1,
+      }, 10, function() {
+      });
+    }
   }
   function end_animations() {
     if ((ttpm_on == 0) || (ttpm_on == 1 && sp_on == 0) || (dc_on == 1)) {
-      $(".letter.odd, .letter.even, .x1, .x2, .x3").css({
-        'animation': 'none'
-      });
+      setTimeout(function(){
+        $(".letter.odd, .letter.even, .x1, .x2, .x3").css({
+          'animation': 'none'
+        });
+      }, 750);
     }
     if (ttpm_on == 1) {
-      $("#home h1").css({
-        'animation': 'none'
-      });
+      setTimeout(function(){
+        $("#home h1").css({
+          'animation': 'none'
+        });
+      }, 750);
     }
   }
 
@@ -78,6 +106,38 @@ $(document).ready(function(){
         dc_width = $("#download_colophon_button .icon_text").outerWidth(),
         header_height = $("#precedents h2").outerHeight();
   }, 1000, true));
+
+  function hb() {
+    ttpm_on = 0;
+    sp_on = 0;
+    dc_on = 0;
+    $("#home h1").css({
+      'animation': 'spaceout 8s ease infinite'
+    });
+    $("#structure_precedents").animate({
+      top: '90vh',
+    }, 750, function() {
+    });
+    end_animations();
+    $("#structure, #precedents").animate({
+      scrollTop: 0,
+    }, 750, function() {
+    });
+    close_pmenu("-45.5vw", 250);
+    $("#typetester_patternmaker").animate({
+      top: '85vh',
+    }, 750, function() {
+    });
+    $("#download_colophon").animate({
+      top: '95vh',
+    }, 750, function() {
+    });
+    $('h2').animate({
+      'padding-top': '0.75vh',
+    }, 750, function() {
+    });
+  }
+  $("#home_button").click(function(){hb()});
 
   function ttpm() {
     ttpm_on = 1;
@@ -203,43 +263,6 @@ $(document).ready(function(){
   }
   $("#download_colophon, #download_colophon_button").click(function(){dc()});
 
-  function hb() {
-    ttpm_on = 0;
-    sp_on = 0;
-    dc_on = 0;
-    $("#home h1").css({
-      'animation': 'spaceout 8s ease infinite'
-    });
-    $(".nav ul").animate({
-      opacity: 0,
-      left: -nav_width
-    }, 500, function() {
-    });
-    $("#structure_precedents").animate({
-      top: '90vh',
-    }, 750, function() {
-    });
-    end_animations();
-    $("#structure, #precedents").animate({
-      scrollTop: 0,
-    }, 750, function() {
-    });
-    close_pmenu("-45.5vw", 250);
-    $("#typetester_patternmaker").animate({
-      top: '85vh',
-    }, 750, function() {
-    });
-    $("#download_colophon").animate({
-      top: '95vh',
-    }, 750, function() {
-    });
-    $('h2').animate({
-      'padding-top': '0.75vh',
-    }, 750, function() {
-    });
-  }
-  $("#home_button").click(function(){hb()});
-
   $("#typetester_patternmaker").hover(
     function() {
       if (ttpm_on == 0) {
@@ -289,33 +312,22 @@ $(document).ready(function(){
       }
   });
 
-  $(".nav ul").hover(
+  $("#placeholder").hover(
     function() {
-      $("#home_button").animate({
-        left: hb_width + icon_width - nav_width,
-      });
-      $("#typetester_patternmaker_button").animate({
-        left: ttpm_width + icon_width - nav_width,
-      });
-      $("#structure_precedents_button").animate({
-        left: sp_width + icon_width - nav_width,
-      });
-      $("#download_colophon_button").animate({
-        left: dc_width + icon_width - nav_width,
-      });
-      $(this).delay(100).animate({
+      $("#menu").animate({
         left: 0,
-      });
-      $(".nav ul li").animate({
-        opacity: 0.75
-      });
-    }, function() {
-      $(".nav ul").animate({
-        left: icon_width - nav_width,
       }, 250, function() {
       });
-      $("#home_button, #typetester_patternmaker_button, #structure_precedents_button, #download_colophon_button").delay(250).animate({
+      $(this).animate({
+        opacity: 0,
+      }, 250, function() {
+      });
+    }, function() {
+      $("#menu").css({
         left: 0,
+      });
+      $(this).animate({
+        opacity: 0,
       }, 250, function() {
       });
       if (ttpm_on == 1 && sp_on == 0) {
@@ -349,7 +361,7 @@ $(document).ready(function(){
         });
       }
   });
-  $(".nav ul li").hover(
+  $("#menu li").hover(
     function() {
       $(this).animate({
         opacity: 1,
@@ -358,8 +370,42 @@ $(document).ready(function(){
     }, function() {
       $(this).animate({
         opacity: 0.75,
-      }, 250, function() {
+        }, 250, function() {
       });
+      $("#placeholder").animate({
+        opacity: 1,
+        }, 250, function() {
+      });
+      if (ttpm_on == 1 && sp_on == 0) {
+        $("#icon_home, #icon_sp, #icon_dc").animate({
+          opacity: 0.25,
+        }, 250, function() {
+        });
+        $("#icon_ttpm").animate({
+          opacity: 1,
+        }, 10, function() {
+        });
+      }
+      else if (ttpm_on == 1 && sp_on == 1 && dc_on == 0) {
+        $("#icon_home, #icon_ttpm, #icon_dc").animate({
+          opacity: 0.25,
+        }, 250, function() {
+        });
+        $("#icon_sp").animate({
+          opacity: 1,
+        }, 10, function() {
+        });
+      }
+      else if (ttpm_on == 1 && sp_on == 1 && dc_on == 1) {
+        $("#icon_home, #icon_ttpm, #icon_sp").animate({
+          opacity: 0.25,
+        }, 250, function() {
+        });
+        $("#icon_dc").animate({
+          opacity: 1,
+        }, 10, function() {
+        });
+      }
   });
 
 // scroll nav
