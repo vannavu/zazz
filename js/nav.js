@@ -42,7 +42,7 @@ $(document).ready(function(){
       'top': header_height + 16,
     });
     $("#menu").animate({
-      left: -menu_width,
+      left: -menu_width - 54,
     }, 500, function() {
     });
     $("#placeholder").css({
@@ -357,7 +357,7 @@ $(document).ready(function(){
       }, 125, function() {
       });
       $("#menu").animate({
-        left: -menu_width
+        left: -menu_width - 54
       }, 250, function() {
       });
       menu_on = 0;
