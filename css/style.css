@@ -57,6 +57,7 @@
 
 html {
   background: var(--neutral);
+  height: 125vh;
 }
 
 body {
