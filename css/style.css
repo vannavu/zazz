@@ -57,7 +57,7 @@
 
 html {
   background: var(--neutral);
-  height: 125vh;
+  height: 101vh;
 }
 
 body {
@@ -162,7 +162,7 @@ ul li {
   color: var(--neutral);
   padding: 0;
   cursor: crosshair;
-  left: -50vw;
+  left: -100vw;
   z-index: 999;
 }
 
@@ -207,7 +207,12 @@ span.icon {
   box-sizing: border-box;
 }
 
-#icon_home, #icon_ttpm, #icon_sp, #icon_dc {
+#icon_home {
+  opacity: 1;
+  width: 16px !important;
+}
+
+#icon_ttpm, #icon_sp, #icon_dc {
   opacity: 0.25;
   width: 16px !important;
 }
@@ -290,7 +295,7 @@ textarea::-webkit-input-placeholder {
   font-family: "Zazz";
   border: none;
   background: none;
-  width: 94%;
+  width: 100%;
   height: calc(50vw - 2*var(--column_margin));
   margin: 2% auto;
   padding: 0;
@@ -324,7 +329,6 @@ textarea:hover {
   font-size: 18px;
   height: 26px;
   position: absolute;
-  bottom: 20vh;
   display: flex;
   color: black;
   bottom: 10vh;
@@ -388,7 +392,7 @@ textarea:hover {
 }
 
 #pattern {
-  font-family: "Zazz";
+  font-family: Zazz;
   width: 100%;
   /*height: calc(50vw - 2*var(--column_margin));*/
   height: auto;
@@ -504,6 +508,10 @@ textarea:hover {
 
 #structure_intro {
   margin: calc(40vw / 14) auto;
+}
+
+.word {
+  white-space: nowrap;
 }
 
 .letter {
@@ -746,6 +754,7 @@ figcaption {
 .p_info h3 {
   font-family: 'Zazz';
   font-size: 2vw;
+  line-height: 100%;
   letter-spacing: calc(2vw * 0.05);
   color: var(--color2_txt);
   white-space: nowrap;
@@ -772,10 +781,10 @@ figcaption {
 .p_info h4 {
   color: var(--color2_txt);
   margin: 8px 0 10px 0;
+  margin-left: calc(4.1vw - 4px);
   padding: 0 4px 0 24px;
   font-size: 16px;
   text-transform: uppercase;
-  margin-left: calc(4.1vw - 4px);
   text-indent: -20px;
 }
 
@@ -809,6 +818,7 @@ figcaption {
   background: var(--neutral);
   height: 100vh;
   overflow-y: scroll;
+  padding-bottom: calc(var(--column_margin) * 1.5);
 }
 
 #download a {
@@ -837,6 +847,7 @@ figcaption {
   height: 100vh;
   color: var(--neutral);
   overflow-y: scroll;
+  padding-bottom: calc(var(--column_margin) * 1.5);
 }
 
 #colophon h2 {
@@ -872,12 +883,6 @@ figcaption {
   font-size: 24px;
   line-height: 32px;
   padding: var(--column_margin);
-}
-
-@media (orientation: portrait) {
-  #mobile_message {
-    display: block;
-  }
 }
 
 @media all {
@@ -938,4 +943,73 @@ figcaption {
     word-wrap: break-word;
     -webkit-print-color-adjust:exact;
   }
+}
+
+@media (orientation: portrait) {
+  #mobile_message {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  :root {
+    --ptsize: 36px;
+  }
+  #home h1 {
+    font-size: 18vw;
+    height: 18vw;
+    line-height: 100%;
+    margin: 0 auto 2.5vw auto;
+    margin-top: calc(48vh - 12vw);
+  }
+  #typetester_patternmaker, #structure_precedents, #download_colophon {
+    top: 100vh;
+  }
+  #placeholder {
+    left: 0;
+    top: calc(50vh - 54px * 2);
+  }
+  #menu {
+    top: calc(50vh - 54px * 2);
+  }
+  h2 {
+    font-size: 21px;
+    padding: 0.75vh 0 2vh 0;
+  }
+  #typetester_patternmaker ul {
+    bottom: calc(10vh + 3vh);
+  }
+  #palette {
+    bottom: calc(8vh + 3vh) !important;
+  }
+  #patternmaker ul {
+    bottom: 5vh;
+  }
+  #g18 {
+    display: none;
+  }
+  #print {
+    display: none;
+  }
+  p {
+    font-size: 15.5px;
+    line-height: 22px;
+  }
+  .p_info h4 {
+    margin: -2px 0 5px 0;
+    margin-left: calc(4.1vw - 4px);
+  }
+  #structure {
+    padding-bottom: calc(var(--column_margin) * 2);
+  }
+  #structure h5 {
+    font-size: 21px;
+    line-height: 28px;
+    margin-bottom: 24px;
+  }
+  #download_colophon p {
+    font-size: 16.5px;
+    line-height: 125%;
+  }
+
 }
