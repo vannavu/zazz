@@ -464,6 +464,7 @@ textarea:hover {
 #structure h2 {
   color: var(--color1);
   background: var(--color1_lt);
+  margin-bottom: calc(40vw / 14 - 0.5vw);
 }
 
 #structure h5 {
@@ -507,7 +508,7 @@ textarea:hover {
 }
 
 #structure_intro {
-  margin: calc(40vw / 14) auto;
+  margin: 0 auto calc(40vw / 14) auto;
 }
 
 .word {
@@ -620,6 +621,7 @@ textarea:hover {
 #precedents h2 {
   color: var(--color2_txt);
   background: var(--color2_lt);
+  margin-bottom: calc(40vw / 14);
 }
 
 #precedents section {
@@ -833,6 +835,10 @@ figcaption {
   color: var(--neutral);
 }
 
+#download h2 {
+  margin-bottom: calc(40vw / 14 - 0.5vw);
+}
+
 #character_set {
   font-family: Zazz;
   font-size: 48px !important;
@@ -852,6 +858,7 @@ figcaption {
 
 #colophon h2 {
   color: var(--neutral);
+  margin-bottom: calc(40vw / 14 - 0.5vw);
 }
 
 #colophon a {
@@ -993,7 +1000,7 @@ figcaption {
   }
   p {
     font-size: 15.5px;
-    line-height: 22px;
+    line-height: 22.5px;
   }
   .p_info h4 {
     margin: -2px 0 5px 0;
