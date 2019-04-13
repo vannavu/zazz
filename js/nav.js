@@ -45,8 +45,11 @@ $(document).ready(function(){
       left: -menu_width,
     }, 500, function() {
     });
-    $(".nav").delay(750).animate({
-      opacity: 1,
+    $("#placeholder").css({
+      'opacity': '1'
+    });
+    $("#placeholder").delay(750).animate({
+      left: 0,
     }, 500, function() {
     });
     if (ttpm_on == 1 && sp_on == 0) {
@@ -136,6 +139,15 @@ $(document).ready(function(){
       'padding-top': '0.75vh',
     }, 750, function() {
     });
+    $("#placeholder").animate({
+      left: -54
+    }, 250, function() {
+    });
+    $("#menu").animate({
+      left: -menu_width - 54
+    }, 250, function() {
+    });
+    menu_on = 0;
   }
   $("#home_button").click(function(){hb()});
 
@@ -312,54 +324,19 @@ $(document).ready(function(){
       }
   });
 
-  $("#placeholder").hover(
-    function() {
-      $("#menu").animate({
-        left: 0,
-      }, 250, function() {
-      });
-      $(this).animate({
-        opacity: 0,
-      }, 250, function() {
-      });
-    }, function() {
-      $("#menu").css({
-        left: 0,
-      });
-      $(this).animate({
-        opacity: 0,
-      }, 250, function() {
-      });
-      if (ttpm_on == 1 && sp_on == 0) {
-        $("#home_button, #structure_precedents_button, #download_colophon_button").animate({
-          opacity: 0.25,
-        }, 250, function() {
-        });
-        $("#typetester_patternmaker_button").animate({
-          opacity: 1,
-        }, 10, function() {
-        });
-      }
-      else if (ttpm_on == 1 && sp_on == 1 && dc_on == 0) {
-        $("#home_button, #typetester_patternmaker_button, #download_colophon_button").animate({
-          opacity: 0.25,
-        }, 250, function() {
-        });
-        $("#structure_precedents_button").animate({
-          opacity: 1,
-        }, 10, function() {
-        });
-      }
-      else if (ttpm_on == 1 && sp_on == 1 && dc_on == 1) {
-        $("#home_button, #typetester_patternmaker_button, #structure_precedents_button").animate({
-          opacity: 0.25,
-        }, 250, function() {
-        });
-        $("#download_colophon_button").animate({
-          opacity: 1,
-        }, 10, function() {
-        });
-      }
+  $("#placeholder").mouseenter(function() {
+    $("#menu").animate({
+      left: 0,
+    }, 400, function() {
+    });
+    $("#home_button, #typetester_patternmaker_button, #structure_precedents_button, #download_colophon_button").css({
+      'opacity': 0.65
+    });
+    $(this).animate({
+      opacity: 0,
+    }, 250, function() {
+    });
+    menu_on = 1;
   });
   $("#menu li").hover(
     function() {
@@ -369,43 +346,52 @@ $(document).ready(function(){
       });
     }, function() {
       $(this).animate({
-        opacity: 0.75,
+        opacity: 0.65,
         }, 250, function() {
       });
-      $("#placeholder").animate({
+  });
+  $(".container_fluid, .nav_link").click(function(){
+    if (menu_on == 1) {
+      $("#placeholder").delay(125).animate({
+        opacity: 1
+      }, 125, function() {
+      });
+      $("#menu").animate({
+        left: -menu_width
+      }, 250, function() {
+      });
+      menu_on = 0;
+    }
+    if (ttpm_on == 1 && sp_on == 0) {
+      $("#icon_home, #icon_sp, #icon_dc").animate({
+        opacity: 0.25,
+      }, 250, function() {
+      });
+      $("#icon_ttpm").animate({
         opacity: 1,
-        }, 250, function() {
+      }, 10, function() {
       });
-      if (ttpm_on == 1 && sp_on == 0) {
-        $("#icon_home, #icon_sp, #icon_dc").animate({
-          opacity: 0.25,
-        }, 250, function() {
-        });
-        $("#icon_ttpm").animate({
-          opacity: 1,
-        }, 10, function() {
-        });
-      }
-      else if (ttpm_on == 1 && sp_on == 1 && dc_on == 0) {
-        $("#icon_home, #icon_ttpm, #icon_dc").animate({
-          opacity: 0.25,
-        }, 250, function() {
-        });
-        $("#icon_sp").animate({
-          opacity: 1,
-        }, 10, function() {
-        });
-      }
-      else if (ttpm_on == 1 && sp_on == 1 && dc_on == 1) {
-        $("#icon_home, #icon_ttpm, #icon_sp").animate({
-          opacity: 0.25,
-        }, 250, function() {
-        });
-        $("#icon_dc").animate({
-          opacity: 1,
-        }, 10, function() {
-        });
-      }
+    }
+    else if (ttpm_on == 1 && sp_on == 1 && dc_on == 0) {
+      $("#icon_home, #icon_ttpm, #icon_dc").animate({
+        opacity: 0.25,
+      }, 250, function() {
+      });
+      $("#icon_sp").animate({
+        opacity: 1,
+      }, 10, function() {
+      });
+    }
+    else if (ttpm_on == 1 && sp_on == 1 && dc_on == 1) {
+      $("#icon_home, #icon_ttpm, #icon_sp").animate({
+        opacity: 0.25,
+      }, 250, function() {
+      });
+      $("#icon_dc").animate({
+        opacity: 1,
+      }, 10, function() {
+      });
+    }
   });
 
 // scroll nav

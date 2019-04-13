@@ -96,6 +96,11 @@ body::-webkit-scrollbar {
   padding: 0 var(--column_margin);
 }
 
+.col-12 {
+  padding: 0 var(--column_margin);
+  height: 100vh;
+}
+
 .col-6::-webkit-scrollbar {
   width: 0px;
 }
@@ -147,7 +152,6 @@ ul li {
 .nav {
   position: fixed;
   z-index: 999;
-  opacity: 0;
 }
 /* button text */
 #menu {
@@ -157,10 +161,11 @@ ul li {
   color: var(--neutral);
   padding: 0;
   cursor: crosshair;
-  left: 0;
+  left: -50vw;
+  z-index: 999;
 }
 
-.icon {
+span.icon {
   opacity: 1;
   font-family: Zazz;
   font-size: 54px;
@@ -182,7 +187,7 @@ ul li {
 }
 
 #home_button, #typetester_patternmaker_button, #structure_precedents_button, #download_colophon_button {
-  opacity: 0.75;
+  opacity: 0.65;
 }
 
 #home_button {
@@ -190,8 +195,9 @@ ul li {
 
 #placeholder {
   position: fixed;
-  left: 0;
+  left: -54px;
   width: 16px;
+  z-index: 998;
 }
 
 #placeholder ul li {
@@ -202,6 +208,7 @@ ul li {
 
 #icon_home, #icon_ttpm, #icon_sp, #icon_dc {
   opacity: 0.25;
+  width: 16px !important;
 }
 
 #home {
