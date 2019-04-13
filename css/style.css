@@ -1007,9 +1007,11 @@ figcaption {
     line-height: 28px;
     margin-bottom: 24px;
   }
+  .p_ {
+    background-blend-mode: normal;
+  }
   #download_colophon p {
     font-size: 16.5px;
     line-height: 125%;
   }
-
 }
