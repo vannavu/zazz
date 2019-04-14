@@ -1,5 +1,6 @@
 var window_width = $(window).width(),
     phone_width = 850,
+    window_height = $(".container-fluid").height(),
     menu_width = $("#menu").outerWidth() + 16,
     hb_width = $("#home_button").width(),
     ttpm_width = $("#typetester_patternmaker_button .icon_text").outerWidth(),
@@ -11,13 +12,14 @@ $(document).ready(function(){
 // mouse structure & nav
   var ttpm_on = 0, sp_on = 0, dc_on = 0, menu_on = 0, pmenu_on = 0;
   $(window).resize(debounce(function() {
-    var nav_width = $(".nav ul").outerWidth(),
-        icon_width = $("#home_button .icon").innerWidth(),
-        hb_width = $("#home_button .icon_text").outerWidth(),
+    var window_width = $(window).width(),
+        window_height = $(".container-fluid").height(),
+        menu_width = $("#menu").outerWidth() + 16,
+        hb_width = $("#home_button").width(),
         ttpm_width = $("#typetester_patternmaker_button .icon_text").outerWidth(),
         sp_width = $("#structure_precedents_button .icon_text").outerWidth(),
         dc_width = $("#download_colophon_button .icon_text").outerWidth(),
-        header_height = $("#precedents h2").outerHeight();
+        header_height = $("#precedents h2").outerHeight()
   }, 1000, true));
 
   function debounce(func, wait, immediate) {
@@ -236,6 +238,9 @@ $(document).ready(function(){
     $(".x3").css({
       'animation': 'x_3 8s infinite'
     });
+    $(".p_grid_container").css({
+      'height': window_height - header_height
+    });
     if (pmenu_on == 0) {
       close_pmenu('-40vw', 500, 750);
     }
@@ -366,7 +371,7 @@ $(document).ready(function(){
         }, 250, function() {
       });
   });
-  $(".container_fluid, .nav_link").click(function(){
+  $(".container-fluid, .nav_link").click(function(){
     if (menu_on == 1) {
       $("#placeholder").delay(125).animate({
         opacity: 1
@@ -420,29 +425,6 @@ $(document).ready(function(){
     }
   });
 
-// scroll nav
-/*
-  var scrollNav = debounce(function(){
-    var st = window.pageYOffset || document.documentElement.scrollTop;
-    if (st > lastScrollTop) {
-      if (ttpm_on == 0) { ttpm(); }
-      else if (ttpm_on == 1 && sp_on == 0) { sp(); }
-      else if (ttpm_on == 1 && sp_on ==1 && dc_on == 0) { dc(); }
-    }
-    else {
-      if (ttpm_on == 1 && sp_on == 0) { hb(); }
-      else if (ttpm_on ==1 && sp_on == 1 && dc_on == 0) { ttpm(); }
-      else if (ttpm_on ==1 && sp_on == 1 && dc_on == 1) { sp(); }
-    }
-    setTimeout(function(){
-      lastScrollTop = $(window).scrollTop();
-    }, 750)
-  }, 75, true);
-  window.onscroll = function(){
-    scrollNav();
-    if (menu_on == 1) { closeMenu(); }
-  };*/
-
 // palette changes
   $("#p1").click(function() {
     var html = document.getElementsByTagName('html')[0];
@@ -492,12 +474,40 @@ $(document).ready(function(){
     patternText = patternText.replace(/-/g, "\u2011");
     patternText = patternText.replace(/–/g, "\u2060–\u2060");
     patternText = patternText.replace(/—/g, "\u2060—\u2060");
+    patternText = patternText.replace(/\r/g, "\u00A0");
+    patternText = patternText.replace(/\n/g, "\u00A0");
+    patternText = patternText.replace(/\?/g, "\u2060\?\u2060");
     $('#pattern').html(patternText);
     var updateText = $('#pattern').text();
     $('#patternmaker h6').text($('#patternmaker h6').text().substring(0, $(".text_preview").val().length));
     var characterCount = String($(".text_preview").val().length);
     current = $('#current');
     current.text(characterCount + '/' + String(textlimit));
+    if (characterCount == textlimit) {
+      $("#current").css({
+        'animation': 'blink 0.35s ease 0s 3'
+      });
+      setTimeout (function() {
+        $("#current").css({
+          'animation': 'none'
+        });
+      }, 1050);
+    }
+    else {
+      $("#current").css({
+        'animation': 'none'
+      });
+    }
+  }
+  function blink_once() {
+    $("#current").css({
+      'animation': 'blink 0.5s'
+    });
+    setTimeout (function() {
+      $("#current").css({
+        'animation': 'none'
+      });
+    }, 500);
   }
   $(".text_preview").on('keyup', function(){updateInput()});
   $("#clear").click(function() {
@@ -607,6 +617,7 @@ $(document).ready(function(){
     document.body.style.setProperty('--grid_size', 2);
     textlimit = 4;
     updateInput();
+    blink_once();
   });
   $("#g3").click(function() {
     g2_on = 0; g3_on = 1; g4_on = 0; g5_on = 0; g7_on = 0; g8_on = 0; g10_on = 0; g15_on = 0; g18_on = 0;
@@ -617,7 +628,8 @@ $(document).ready(function(){
     }
     document.body.style.setProperty('--grid_size', '3');
     textlimit = 2;
-    updateInput();
+    updateInput()
+    blink_once();;
   });
   $("#g4").click(function() {
     g2_on = 0; g3_on = 0; g4_on = 1; g5_on = 0; g7_on = 0; g8_on = 0; g10_on = 0; g15_on = 0; g18_on = 0;
@@ -629,6 +641,7 @@ $(document).ready(function(){
     document.body.style.setProperty('--grid_size', '4');
     textlimit = 5;
     updateInput();
+    blink_once();
   });
   $("#g5").click(function() {
     g2_on = 0; g3_on = 0; g4_on = 0; g5_on = 1; g7_on = 0; g8_on = 0; g10_on = 0; g15_on = 0; g18_on = 0;
@@ -640,6 +653,7 @@ $(document).ready(function(){
     document.body.style.setProperty('--grid_size', '5');
     textlimit = 6;
     updateInput();
+    blink_once();
   });
   $("#g7").click(function() {
     g2_on = 0; g3_on = 0; g4_on = 0; g5_on = 0; g7_on = 1; g8_on = 0; g10_on = 0; g15_on = 0; g18_on = 0;
@@ -651,6 +665,7 @@ $(document).ready(function(){
     }
     textlimit = 5;
     updateInput();
+    blink_once();
   });
   $("#g8").click(function() {
     g2_on = 0; g3_on = 0; g4_on = 0; g5_on = 0; g7_on = 0; g8_on = 1; g10_on = 0; g15_on = 0; g18_on = 0;
@@ -662,6 +677,7 @@ $(document).ready(function(){
     }
     textlimit = 12;
     updateInput();
+    blink_once();
   });
   $("#g10").click(function() {
     g2_on = 0; g3_on = 0; g4_on = 0; g5_on = 0; g7_on = 0; g8_on = 0; g10_on = 1; g15_on = 0; g18_on = 0;
@@ -673,6 +689,7 @@ $(document).ready(function(){
     document.body.style.setProperty('--grid_size', '10');
     textlimit = 15;
     updateInput();
+    blink_once();
   });
   $("#g15").click(function() {
     g2_on = 0; g3_on = 0; g4_on = 0; g5_on = 0; g7_on = 0; g8_on = 0; g10_on = 0; g15_on = 1; g18_on = 0;
@@ -684,6 +701,7 @@ $(document).ready(function(){
     document.body.style.setProperty('--grid_size', '15');
     textlimit = 25;
     updateInput();
+    blink_once();
   });
   $("#g18").click(function() {
     g2_on = 0; g3_on = 0; g4_on = 0; g5_on = 0; g7_on = 0; g8_on = 0; g10_on = 0; g15_on = 0; g18_on = 1;
@@ -695,6 +713,7 @@ $(document).ready(function(){
     document.body.style.setProperty('--grid_size', '18');
     textlimit = 26;
     updateInput();
+    blink_once();
   });
 
 // print

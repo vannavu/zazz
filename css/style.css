@@ -382,6 +382,17 @@ textarea:hover {
 #neutral {color: #cccbc9;}
 #charcoal {color: #222223; margin-right: 15px;}
 
+@keyframes blink {
+  0% {background: black; color: var(--neutral)}
+  60% {background: black; color: var(--neutral)}
+  100% {background: none; color: black}
+}
+
+#current {
+  padding: 1px 5px 3px 5px !important;
+  margin: -1px -5px -3px -5px !important;
+}
+
 #clear {
   padding: 1px 5px 3px 5px !important;
 }
@@ -630,7 +641,7 @@ textarea:hover {
 
 .p_grid_container {
   width: 42vw;
-  height: calc(100vh - 73px);
+  height: auto;
   padding: 1.25vw 3vw 5vh 3vw;
   position: fixed;
   bottom: 0;
