@@ -123,7 +123,7 @@ $(document).ready(function(){
       'animation': 'spaceout 8s ease infinite'
     });
     end_animations();
-    $("#structure, #precedents").animate({
+    $("#structure, #precedents").delay(750).animate({
       scrollTop: 0,
     }, 750, function() {
     });
@@ -193,7 +193,7 @@ $(document).ready(function(){
     }, 750, function() {
     });
     end_animations();
-    $("#structure, #precedents").animate({
+    $("#structure, #precedents").delay(750).animate({
       scrollTop: 0,
     }, 750, function() {
     });
@@ -238,9 +238,16 @@ $(document).ready(function(){
     $(".x3").css({
       'animation': 'x_3 8s infinite'
     });
-    $(".p_grid_container").css({
-      'height': window_height - header_height
-    });
+    if (window_width > window_height) {
+      $(".p_grid_container").css({
+        'height': window_height * 0.98 - header_height
+      });
+    }
+    else {
+      $(".p_grid_container").css({
+        'height': window_width* 0.98 - header_height
+      });
+    }
     if (pmenu_on == 0) {
       close_pmenu('-40vw', 500, 750);
     }
@@ -285,7 +292,7 @@ $(document).ready(function(){
     }, 750, function() {
     });
     end_animations();
-    $("#structure, #precedents").animate({
+    $("#structure, #precedents").delay(750).animate({
       scrollTop: 0,
     }, 750, function() {
     });
