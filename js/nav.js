@@ -490,7 +490,7 @@ $(document).ready(function(){
     var characterCount = String($(".text_preview").val().length);
     current = $('#current');
     current.text(characterCount + '/' + String(textlimit));
-    if (characterCount > textlimit) {
+    if (characterCount == textlimit) {
       $("#current").css({
         'animation': 'blink 0.35s ease 0s 3'
       });
