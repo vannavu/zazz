@@ -705,10 +705,10 @@ textarea:hover {
   cursor: crosshair;
 }
 
-.p1 { background-image: url('../images/albers1.jpg'); }
-.p2 { background-image: url('../images/kaba1.jpg'); }
-.p4 { background-image: url('../images/pattern1.jpg'); }
+.p1 { background-image: url('../images/pattern1.jpg'); }
+.p2 { background-image: url('../images/albers1.jpg'); }
 .p3 { background-image: url('../images/tangly1.jpg'); }
+.p4 { background-image: url('../images/kaba1.jpg'); }
 .p5 { background-image: url('../images/calcula1.jpg'); }
 .p6 { background-image: url('../images/schrofer1.jpg'); }
 .p7 { background-image: url('../images/orientation1.jpg'); }
@@ -834,7 +834,7 @@ figcaption {
   background: var(--neutral);
   height: 100vh;
   overflow-y: scroll;
-  padding-bottom: calc(var(--column_margin) * 1.5);
+  padding-bottom: calc(var(--column_margin));
 }
 
 #download a {
@@ -867,7 +867,7 @@ figcaption {
   height: 100vh;
   color: var(--neutral);
   overflow-y: scroll;
-  padding-bottom: calc(var(--column_margin) * 1.5);
+  padding-bottom: calc(var(--column_margin));
 }
 
 #colophon h2 {
