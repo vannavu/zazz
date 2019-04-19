@@ -129,6 +129,8 @@ h2 {
   z-index: 900;
   width: 50vw;
   margin-left: calc(-1 * var(--column_margin));
+  position: -webkit-sticky;
+  position: sticky;
 }
 
 h2:hover {
@@ -148,6 +150,7 @@ ul li {
   margin: 0 0 20px 0;
   white-space: nowrap;
   position: relative;
+  font-size: 18px;
 }
 
 .nav {
@@ -426,6 +429,7 @@ textarea:hover {
 
 .grid_button {
   padding: 1px 3px 2px 3px !important;
+  font-size: 18px !important;
 }
 
 .grid_button:hover, #clear:hover, #print:hover {
@@ -460,8 +464,7 @@ textarea:hover {
 }
 
 #structure_precedents h2 {
-  position: -webkit-sticky;
-  position: sticky;
+
 }
 
 #structure {
@@ -1002,6 +1005,12 @@ figcaption {
   }
   #patternmaker ul {
     bottom: 5vh;
+  }
+  ul li {
+    font-size: 16px;
+  }
+  .grid_button {
+    font-size: 16px !important;
   }
   #g18 {
     display: none;
