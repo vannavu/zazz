@@ -851,6 +851,7 @@ figcaption {
 
 #download h2 {
   margin-bottom: calc(40vw / 14 - 0.5vw);
+  background: var(--neutral);
 }
 
 #character_set {
@@ -871,6 +872,7 @@ figcaption {
 }
 
 #colophon h2 {
+  background: var(--charcoal);
   color: var(--neutral);
   margin-bottom: calc(40vw / 14 - 0.5vw);
 }
@@ -907,12 +909,12 @@ figcaption {
 }
 
 @media all {
-  .page_break { display: none; }
 }
 
 @media print {
   html {
     background: none;
+    page-break-inside: avoid;
   }
   body {
     height: auto;
@@ -962,6 +964,7 @@ figcaption {
     padding: 0;
     color: var(--color1);
     word-wrap: break-word;
+    word-break: break-all;
     -webkit-print-color-adjust:exact;
   }
 }
