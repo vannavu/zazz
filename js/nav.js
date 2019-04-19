@@ -634,7 +634,7 @@ $(document).ready(function(){
       });
     }
     document.body.style.setProperty('--grid_size', '3');
-    textlimit = 2;
+    textlimit = 4;
     updateInput()
     blink_once();;
   });
