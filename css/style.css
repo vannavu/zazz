@@ -527,14 +527,18 @@ textarea:hover {
 
 .word {
   white-space: nowrap;
+  text-align: center;
 }
 
 .letter {
   display: inline-block;
   padding: 0;
-  margin: 0;
   font-size: calc(40vw / 7);
   line-height: 100%;
+  overflow: visible;
+  width: calc(40vw / 7 * 1.01);
+  margin: 0;
+  margin-right: calc(40vw / 7 * -0.01);
 }
 
 @keyframes even_rotate {
