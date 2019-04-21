@@ -538,7 +538,8 @@ textarea:hover {
   overflow: visible;
   width: calc(40vw / 7 * 1.01);
   margin: 0;
-  margin-right: calc(40vw / 7 * -0.01);
+  margin-left: calc(40vw / 7 * -0.005);
+  margin-right: calc(40vw / 7 * -0.005);
 }
 
 @keyframes even_rotate {
