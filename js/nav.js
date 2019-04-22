@@ -484,6 +484,7 @@ $(document).ready(function(){
     patternText = patternText.replace(/\r/g, "\u00A0");
     patternText = patternText.replace(/\n/g, "\u00A0");
     patternText = patternText.replace(/\?/g, "\u2060\?\u2060");
+    patternText = patternText.replace(/\!/g, "\u2060\!\u2060");
     $('#pattern').html(patternText);
     var updateText = $('#pattern').text();
     $('#patternmaker h6').text($('#patternmaker h6').text().substring(0, $(".text_preview").val().length));
