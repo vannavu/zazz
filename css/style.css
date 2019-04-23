@@ -711,13 +711,13 @@ textarea:hover {
 }
 
 .p1 { background-image: url('../images/pattern1.jpg'); }
-.p2 { background-image: url('../images/albers1.jpg'); }
-.p3 { background-image: url('../images/tangly1.jpg'); }
-.p4 { background-image: url('../images/kaba1.jpg'); }
-.p5 { background-image: url('../images/calcula1.jpg'); }
-.p6 { background-image: url('../images/schrofer1.jpg'); }
-.p7 { background-image: url('../images/orientation1.jpg'); }
-.p8 { background-image: url('../images/wind1.jpg'); }
+.p2 { background-image: url('../images/wind1.jpg'); }
+.p3 { background-image: url('../images/albers1.jpg'); }
+.p4 { background-image: url('../images/tangly1.jpg'); }
+.p5 { background-image: url('../images/kaba1.jpg'); }
+.p6 { background-image: url('../images/calcula1.jpg'); }
+.p7 { background-image: url('../images/schrofer1.jpg'); }
+.p8 { background-image: url('../images/orientation1.jpg'); }
 .p9 { background-image: url('../images/tauba1.jpg'); }
 
 .p_info {
