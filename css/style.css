@@ -931,8 +931,8 @@ figcaption {
   :root {
     --paper_width: 1275px;
     --paper_height: 1749px;
-    --margin_top: 30px;
-    --margin_side: 30px;
+    --margin_top: 40px;
+    --margin_side: 32px;
     --pattern_size: calc(var(--paper_width) - var(--margin_side) * 2 - 205px);
     --neutral: white;
     --gray: #333334;
@@ -966,7 +966,7 @@ figcaption {
     font-size: calc(var(--pattern_size) / 13.7);
     letter-spacing: calc(var(--pattern_size) / 13.75 * 0.05);
     text-align: center;
-    margin: 20px 0;
+    margin: 20px auto;
     padding: 0;
     color: var(--color1);
     word-wrap: break-word;
