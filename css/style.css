@@ -440,6 +440,7 @@ textarea:hover {
 #g7 {background: var(--neutral);}
 
 #print {
+  visibility: hidden;
   position: absolute;
   width: 65px;
   left: calc(25vw - 61px / 2);
